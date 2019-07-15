@@ -1,0 +1,31 @@
+{
+  "name": "connect-client",
+  "version": "0.1.0",
+  "description": "HTTP client for Coleção.Moda Connect API",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx webpack --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colecaomoda/connect-client.git"
+  },
+  "author": "Mateus Maso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colecaomoda/connect-client/issues"
+  },
+  "homepage": "https://github.com/colecaomoda/connect-client#readme",
+  "devDependencies": {
+    "@types/isomorphic-fetch": "0.0.35",
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
