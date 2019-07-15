@@ -1,7 +1,10 @@
+const nodeExternals = require('webpack-node-externals')
+
 module.exports = {
+  target: "node",
   entry: './src/index.ts',
   output: {
-    filename: './dist/index.js'
+    filename: './index.js'
   },
   resolve: {
     extensions: [".ts", ".js"]
@@ -12,5 +15,6 @@ module.exports = {
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]
   },
-  devtool: "source-map"
+  devtool: "source-map",
+  externals: [nodeExternals()]
 }
