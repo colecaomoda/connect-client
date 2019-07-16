@@ -1,11 +1,11 @@
-import ConnectClient from './connectClient'
-import ConnectClientImpl from './connectClientImpl'
-import ConnectClientConfig from './connectClientConfig'
+import ConnectClient from './client'
+import ConnectClientImpl from './clientImpl'
+import ConnectConfig from './config'
 import Material from './material'
 
 export {
   ConnectClient,
   ConnectClientImpl,
-  ConnectClientConfig,
+  ConnectConfig,
   Material
 }
