@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": ".",
-    "sourceMap": true,
-    "strictNullChecks": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": [
+      "es2015"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
-    "allowJs": true,
-    "noImplicitAny": true
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "outDir": "dist",
+    "removeComments": false,
+    "sourceMap": true,
+    "strict": true,
+    "resolveJsonModule": true
   },
   "include": [
-    "./src/"
+    "src/index.ts"
   ]
 }
