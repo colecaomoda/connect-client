@@ -1,0 +1,10 @@
+{
+  "git": {
+    "tagName": "v${version}"
+  },
+  "github": {
+    "release": true,
+    "assets": ["dist/*.zip"]
+  },
+  "npm": false
+}

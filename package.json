@@ -1,12 +1,12 @@
 {
   "name": "connect-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HTTP client for Coleção.Moda Connect API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "release": "npm run build && release-it --no-npm",
+    "release": "npm run build && release-it",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
