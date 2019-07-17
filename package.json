@@ -6,6 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "release": "release-it --no-npm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "@types/request-promise": "^4.1.44",
     "@types/request-promise-native": "^1.0.16",
     "awesome-typescript-loader": "^5.2.1",
+    "release-it": "^12.3.3",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.5.3",
     "webpack": "^4.35.3",
