@@ -4,7 +4,7 @@
   },
   "github": {
     "release": true,
-    "assets": ["connect-client-v${version}.tgz"]
+    "assets": ["*.tgz"]
   },
   "npm": false
 }
