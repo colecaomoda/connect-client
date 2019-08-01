@@ -16,7 +16,7 @@ export default class ConnectClientImpl implements ConnectClient {
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify(materials)
+      body: JSON.stringify({ materials })
     }).then((_) => {
       return
     })
