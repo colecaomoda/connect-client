@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "release": "rm *.tgz && npm run build && npm pack && release-it",
+    "release": "npm run build && npm pack && release-it",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
