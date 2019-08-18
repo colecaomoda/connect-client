@@ -9,7 +9,7 @@ $ npm install
 ## Release
 
 ```sh
-$ GITHUB_TOKEN=... npm publish
+$ GITHUB_TOKEN=... npm run release
 ```
 
 > Don't forget to increment the `package.json` version (major or minor)
