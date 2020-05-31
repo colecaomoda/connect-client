@@ -2,6 +2,7 @@ import ConnectConfig from "./config"
 import ConnectClient from "./client"
 import Material from "./material"
 import Trimming from "./trimming"
+import Supplier from "./supplier"
 import * as request from "request-promise-native"
 
 export default class ConnectClientImpl implements ConnectClient {
@@ -30,6 +31,18 @@ export default class ConnectClientImpl implements ConnectClient {
         "Authorization": this.config.authToken,
       },
       body: JSON.stringify({ trimmings })
+    }).then((_) => {
+      return
+    })
+  }
+
+  createSuppliers(suppliers: Array<Supplier>): Promise<void> {
+    return request.post({
+      url: `${this.config.apiUrl}/suppliers`,
+      headers: {
+        "Authorization": this.config.authToken,
+      },
+      body: JSON.stringify({ suppliers })
     }).then((_) => {
       return
     })
