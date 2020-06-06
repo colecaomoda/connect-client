@@ -9,7 +9,7 @@ $ npm install
 ## Usage
 
 ```js
-const ConnectClient = require("connect-client")
+import ConnectClient from "@colecaomoda/connect-client"
 
 const connectClient = new ConnectClient({
   apiUrl: process.env.CONNECT_URL,

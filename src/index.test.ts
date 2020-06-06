@@ -1,9 +1,7 @@
-const ConnectClient = require("./index.ts").default
+import ConnectClient from "./index"
 const { expect } = require('chai')
 const nock = require('nock')
 const API_URL = 'https://connect.colecao.moda'
-
-console.log(ConnectClient)
 
 describe('client', () => {
   beforeEach(() => {
