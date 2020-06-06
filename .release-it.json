@@ -6,5 +6,5 @@
     "release": true,
     "assets": ["*.tgz"]
   },
-  "npm": false
+  "npm": true
 }
