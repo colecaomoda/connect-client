@@ -9,9 +9,9 @@ $ npm install
 ## Usage
 
 ```js
-const { ConnectClientImpl } = require("connect-client")
+const ConnectClient = require("connect-client")
 
-const connectClient = new ConnectClientImpl({
+const connectClient = new ConnectClient({
   apiUrl: process.env.CONNECT_URL,
   authToken: process.env.CONNECT_AUTH_TOKEN
 })
