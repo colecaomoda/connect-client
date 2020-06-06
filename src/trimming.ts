@@ -11,4 +11,5 @@ export default class Trimming {
   prices: Array<Price> | undefined;
   colors: Array<Color> | undefined;
   compositions: Array<Composition> | undefined;
+  supplier_integration_ids: Array<string> | undefined;
 }
