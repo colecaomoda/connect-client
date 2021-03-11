@@ -33,7 +33,12 @@
     "typescript": "^3.5.3",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "serialize-javascript": ">=3.1.0",
+    "minimist": ">=1.2.3",
+    "kind-of": ">=6.0.3",
+    "lodash": ">=4.17.19",
+    "yargs-parser": ">=13.1.2"
   },
   "dependencies": {
     "request": "^2.88.0",
