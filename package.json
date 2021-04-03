@@ -6,6 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "release": "npm run build && npm pack && release-it",
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
   "repository": {

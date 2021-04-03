@@ -2,7 +2,9 @@
 
 ## 0.2.0
 
-- Renamed `createMaterials`, `createTrimmings`, `createSuppliers` to `upsert{...}`
+- Renamed `createMaterials` to `upsertMaterials`.
+- Renamed `createTrimmings` to `upsertTrimmings`.
+- Renamed `createSuppliers` to `upsertSuppliers`.
 - Added `updateCustomFields` endpoint.
 - Added `updateThemeClothing` endpoint.
 - Added `updateWorkflowExecution` endpoint.
