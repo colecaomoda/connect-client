@@ -1,4 +1,4 @@
-name: Release
+name: Build, Test and Release
 
 on:
   push:
@@ -48,12 +48,6 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm install
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-<<<<<<< HEAD:.github/workflows/release.yaml
-=======
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm run release
->>>>>>> d39142d6796c4089ef73f59a92cd4fdfd6d42942:.github/workflows/build-test-release.yaml
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm run release
