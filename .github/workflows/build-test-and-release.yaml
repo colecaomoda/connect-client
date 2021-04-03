@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,25 +14,13 @@ jobs:
           fetch-depth: 0
       - run: npm install
       - run: npm run build
+      - run: npm run test
       - uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/download-artifact@master
-        with:
-          name: dist
-          path: dist
-      - run: npm install
-      - run: npm run test
-  release:
-    needs: test
+  publish-and-release:
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -50,6 +38,15 @@ jobs:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm run release
+      - run: npx publish-if-not-exists
+      - run: echo "VERSION=$(cat package.json | jq .version | tr -d '"')" >> $GITHUB_ENV
+      - run: gh release view v$VERSION && echo "GH_RELEASED=YES" >> $GITHUB_ENV  || echo "GH_RELEASED=NO" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: zendesk/action-create-release@v1
+        if: env.GH_RELEASED == 'NO'
+        with:
+          tag_name: v${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
