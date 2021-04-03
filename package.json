@@ -6,8 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "release": "npm run build && npm pack && release-it --ci", 
-    "dry-release": "npm run build && npm pack && release-it --ci --dry-run", 
+    "release": "npm run build && npm pack && release-it --ci",
     "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
   "repository": {
@@ -26,21 +25,21 @@
     "@types/request-promise-native": "^1.0.16",
     "awesome-typescript-loader": "^5.2.1",
     "chai": "^4.2.0",
+    "kind-of": ">=6.0.3",
+    "lodash": ">=4.17.19",
+    "minimist": ">=1.2.3",
     "mocha": "^6.2.0",
     "nock": "^10.0.6",
-    "release-it": "^12.3.3",
+    "publish-if-not-exists": "^1.1.0",
+    "serialize-javascript": ">=3.1.0",
     "source-map-loader": "^0.2.4",
+    "ssri": ">=8.0.1",
     "ts-mocha": "^7.0.0",
     "typescript": "^3.5.3",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "webpack-node-externals": "^1.7.2",
-    "serialize-javascript": ">=3.1.0",
-    "minimist": ">=1.2.3",
-    "kind-of": ">=6.0.3",
-    "lodash": ">=4.17.19",
-    "yargs-parser": ">=13.1.2",
-    "ssri": ">=8.0.1"
+    "yargs-parser": ">=13.1.2"
   },
   "dependencies": {
     "request": "^2.88.0",
