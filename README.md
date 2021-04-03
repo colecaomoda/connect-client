@@ -16,15 +16,12 @@ const connectClient = new ConnectClient({
   authToken: process.env.CONNECT_AUTH_TOKEN
 })
 
-connectClient.createSuppliers([...])
-connectClient.createTrimmings([...])
-connectClient.createMaterials([...])
-```
-
-## Release
-
-```sh
-$ GITHUB_TOKEN=... npm run release
+connectClient.upsertSuppliers([...])
+connectClient.upsertTrimmings([...])
+connectClient.upsertMaterials([...])
+connectClient.updateCustomFields([...])
+connectClient.updateThemeClothing({...})
+connectClient.updateWorkflowExecution({...})
 ```
 
 ## Test
@@ -32,3 +29,7 @@ $ GITHUB_TOKEN=... npm run release
 ```sh
 $ npm test
 ```
+
+## Changelog
+
+[See releases](/CHANGELOG.md)

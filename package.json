@@ -1,6 +1,6 @@
 {
   "name": "@colecaomoda/connect-client",
-  "version": "0.1.7",
+  "version": "0.2.1",
   "description": "HTTP client for Coleção.Moda Connect API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -38,7 +38,8 @@
     "minimist": ">=1.2.3",
     "kind-of": ">=6.0.3",
     "lodash": ">=4.17.19",
-    "yargs-parser": ">=13.1.2"
+    "yargs-parser": ">=13.1.2",
+    "ssri": ">=8.0.1"
   },
   "dependencies": {
     "request": "^2.88.0",
