@@ -20,34 +20,3 @@ jobs:
         with:
           name: dist
           path: dist
-  publish-and-release:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/download-artifact@master
-        with:
-          name: dist
-          path: dist
-      - name: git config
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - run: npm install
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npx publish-if-not-exists
-      - run: echo "VERSION=$(cat package.json | jq .version | tr -d '"')" >> $GITHUB_ENV
-      - run: gh release view v$VERSION && echo "GH_RELEASED=YES" >> $GITHUB_ENV  || echo "GH_RELEASED=NO" >> $GITHUB_ENV
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: zendesk/action-create-release@v1
-        if: env.GH_RELEASED == 'NO'
-        with:
-          tag_name: v${{ env.VERSION }}
-          release_name: Release ${{ env.VERSION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
