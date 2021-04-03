@@ -19,6 +19,9 @@ const connectClient = new ConnectClient({
 connectClient.upsertSuppliers([...])
 connectClient.upsertTrimmings([...])
 connectClient.upsertMaterials([...])
+connectClient.updateCustomFields([...])
+connectClient.updateThemeClothing({...})
+connectClient.updateWorkflowExecution({...})
 ```
 
 ## Test
@@ -26,3 +29,7 @@ connectClient.upsertMaterials([...])
 ```sh
 $ npm test
 ```
+
+## Changelog
+
+[See releases](/CHANGELOG.md)
