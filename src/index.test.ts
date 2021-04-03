@@ -106,7 +106,10 @@ describe('client', () => {
       authToken: "abc123"
     })
 
-    return client.updateCustomFields([]).then(() => {
+    return client.updateCustomFields([{
+      alias: "test",
+      value: "test"
+    }]).then(() => {
       expect(true).equal(true)
     })
   })
