@@ -1,9 +1,11 @@
 # connect-client
 
+Node HTTP Client for Connect API.
+
 ## Install
 
 ```sh
-$ npm install
+$ npm install "@colecaomoda/connect-client"
 ```
 
 ## Usage
