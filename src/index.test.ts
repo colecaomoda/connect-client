@@ -22,6 +22,10 @@ describe('client', () => {
       .reply(201, {})
 
     nock(API_URL)
+      .put(/\/theme_clothings/)
+      .reply(201, {})
+
+    nock(API_URL)
       .put(/\/theme_clothings\/123/)
       .reply(201, {})
 
@@ -107,8 +111,34 @@ describe('client', () => {
     })
 
     return client.updateCustomFields([{
+      integration_id: "test",
       alias: "test",
-      value: "test"
+      values: [{
+        integration_id: "test",
+        value: "test"
+      }]
+    }]).then(() => {
+      expect(true).equal(true)
+    })
+  })
+
+  it('should update theme clothings', () => {
+    const client = new ConnectClient({
+      apiUrl: API_URL,
+      authToken: "abc123"
+    })
+
+    return client.updateThemeClothings([{
+      id: 123,
+      code: "abc123",
+      custom_fields: [{
+        integration_id: "test",
+        alias: "test",
+        values: [{
+          integration_id: "test",
+          value: "test"
+        }]
+      }]
     }]).then(() => {
       expect(true).equal(true)
     })

@@ -1,18 +1,19 @@
 import * as request from "request-promise-native"
-import Material from "./material"
-import Trimming from "./trimming"
-import Supplier from "./supplier"
-import CustomField from "./customField"
-import ThemeClothing from "./themeClothing"
-import WorkflowExecution from "./workflowExecution"
+import MaterialInput from "./materialInput"
+import TrimmingInput from "./trimmingInput"
+import SupplierInput from "./supplierInput"
+import CustomFieldInput from "./customFieldInput"
+import ThemeClothingInput from "./themeClothingInput"
+import WorkflowExecutionInput from "./workflowExecutionInput"
 
 export interface IConnectClient {
-  upsertMaterials(materials: Array<Material>): Promise<void>;
-  upsertTrimmings(trimmings: Array<Trimming>): Promise<void>;
-  upsertSuppliers(trimmings: Array<Supplier>): Promise<void>;
-  updateCustomFields(customFields: Array<CustomField>): Promise<void>;
-  updateThemeClothing(themeClothing: ThemeClothing): Promise<void>;
-  updateWorkflowExecution(workflowExecution: WorkflowExecution): Promise<void>;
+  upsertMaterials(materials: Array<MaterialInput>): Promise<void>;
+  upsertTrimmings(trimmings: Array<TrimmingInput>): Promise<void>;
+  upsertSuppliers(trimmings: Array<SupplierInput>): Promise<void>;
+  updateCustomFields(customFields: Array<CustomFieldInput>): Promise<void>;
+  updateThemeClothings(themeClothing: Array<ThemeClothingInput>): Promise<void>;
+  updateThemeClothing(themeClothings: ThemeClothingInput): Promise<void>;
+  updateWorkflowExecution(workflowExecution: WorkflowExecutionInput): Promise<void>;
 }
 
 export class ConnectConfig {
@@ -27,7 +28,7 @@ export default class ConnectClient implements IConnectClient {
     this.config = config
   }
 
-  upsertMaterials(materials: Array<Material>): Promise<void> {
+  upsertMaterials(materials: Array<MaterialInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/materials`,
       headers: {
@@ -39,7 +40,7 @@ export default class ConnectClient implements IConnectClient {
     })
   }
 
-  upsertTrimmings(trimmings: Array<Trimming>): Promise<void> {
+  upsertTrimmings(trimmings: Array<TrimmingInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/trimmings`,
       headers: {
@@ -51,7 +52,7 @@ export default class ConnectClient implements IConnectClient {
     })
   }
 
-  upsertSuppliers(suppliers: Array<Supplier>): Promise<void> {
+  upsertSuppliers(suppliers: Array<SupplierInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/suppliers`,
       headers: {
@@ -63,19 +64,31 @@ export default class ConnectClient implements IConnectClient {
     })
   }
 
-  updateCustomFields(customFields: Array<CustomField>): Promise<void> {
+  updateCustomFields(customFields: Array<CustomFieldInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/custom_fields`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ customFields })
+      body: JSON.stringify({ custom_fields: customFields })
     }).then((_) => {
       return
     })
   }
 
-  updateThemeClothing(themeClothing: ThemeClothing): Promise<void> {
+  updateThemeClothings(themeClothings: Array<ThemeClothingInput>): Promise<void> {
+    return request.put({
+      url: `${this.config.apiUrl}/theme_clothings`,
+      headers: {
+        "Authorization": this.config.authToken,
+      },
+      body: JSON.stringify({ theme_clothings: themeClothings })
+    }).then((_) => {
+      return
+    })
+  }
+
+  updateThemeClothing(themeClothing: ThemeClothingInput): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/theme_clothings/${themeClothing.id}`,
       headers: {
@@ -87,7 +100,7 @@ export default class ConnectClient implements IConnectClient {
     })
   }
 
-  updateWorkflowExecution(workflowExecution: WorkflowExecution): Promise<void> {
+  updateWorkflowExecution(workflowExecution: WorkflowExecutionInput): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/workflow_executions/${workflowExecution.uuid}`,
       headers: {

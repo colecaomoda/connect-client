@@ -1,4 +1,4 @@
-export default class Supplier {
+export default class SupplierInput {
   integration_id: string | undefined;
   business_name: string | undefined;
   code: string | undefined;
