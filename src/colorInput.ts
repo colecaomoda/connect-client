@@ -1,4 +1,4 @@
-export default class Color {
+export default class ColorInput {
   code: string | undefined;
   name: string | undefined;
   hex: string | undefined;

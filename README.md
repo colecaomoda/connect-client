@@ -18,10 +18,12 @@ const connectClient = new ConnectClient({
   authToken: process.env.CONNECT_AUTH_TOKEN
 })
 
+// Full docs check: https://connect-docs.colecao.moda/?javascript
 connectClient.upsertSuppliers([...])
 connectClient.upsertTrimmings([...])
 connectClient.upsertMaterials([...])
 connectClient.updateCustomFields([...])
+connectClient.updateThemeClothings([...])
 connectClient.updateThemeClothing({...})
 connectClient.updateWorkflowExecution({...})
 ```
