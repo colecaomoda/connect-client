@@ -7,13 +7,13 @@ import ThemeClothingInput from "./themeClothingInput"
 import WorkflowExecutionInput from "./workflowExecutionInput"
 
 export interface IConnectClient {
-  upsertMaterials(materials: Array<MaterialInput>): Promise<void>;
-  upsertTrimmings(trimmings: Array<TrimmingInput>): Promise<void>;
-  upsertSuppliers(trimmings: Array<SupplierInput>): Promise<void>;
-  updateCustomFields(customFields: Array<CustomFieldInput>): Promise<void>;
-  updateThemeClothings(themeClothing: Array<ThemeClothingInput>): Promise<void>;
-  updateThemeClothing(themeClothings: ThemeClothingInput): Promise<void>;
-  updateWorkflowExecution(workflowExecution: WorkflowExecutionInput): Promise<void>;
+  upsertMaterials(materialInputs: Array<MaterialInput>): Promise<void>;
+  upsertTrimmings(trimmingInputs: Array<TrimmingInput>): Promise<void>;
+  upsertSuppliers(supplierInputs: Array<SupplierInput>): Promise<void>;
+  updateCustomFields(customFieldInputs: Array<CustomFieldInput>): Promise<void>;
+  updateThemeClothings(themeClothingInputs: Array<ThemeClothingInput>): Promise<void>;
+  updateThemeClothing(themeClothingInput: ThemeClothingInput): Promise<void>;
+  updateWorkflowExecution(workflowExecutionInput: WorkflowExecutionInput): Promise<void>;
 }
 
 export class ConnectConfig {
@@ -28,85 +28,85 @@ export default class ConnectClient implements IConnectClient {
     this.config = config
   }
 
-  upsertMaterials(materials: Array<MaterialInput>): Promise<void> {
+  upsertMaterials(materialInputs: Array<MaterialInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/materials`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ materials })
+      body: JSON.stringify({ materials: materialInputs })
     }).then((_) => {
       return
     })
   }
 
-  upsertTrimmings(trimmings: Array<TrimmingInput>): Promise<void> {
+  upsertTrimmings(trimmingInputs: Array<TrimmingInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/trimmings`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ trimmings })
+      body: JSON.stringify({ trimmings: trimmingInputs })
     }).then((_) => {
       return
     })
   }
 
-  upsertSuppliers(suppliers: Array<SupplierInput>): Promise<void> {
+  upsertSuppliers(supplierInputs: Array<SupplierInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/suppliers`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ suppliers })
+      body: JSON.stringify({ suppliers: supplierInputs })
     }).then((_) => {
       return
     })
   }
 
-  updateCustomFields(customFields: Array<CustomFieldInput>): Promise<void> {
+  updateCustomFields(customFieldInputs: Array<CustomFieldInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/custom_fields`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ custom_fields: customFields })
+      body: JSON.stringify({ custom_fields: customFieldInputs })
     }).then((_) => {
       return
     })
   }
 
-  updateThemeClothings(themeClothings: Array<ThemeClothingInput>): Promise<void> {
+  updateThemeClothings(themeClothingInputs: Array<ThemeClothingInput>): Promise<void> {
     return request.put({
       url: `${this.config.apiUrl}/theme_clothings`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ theme_clothings: themeClothings })
+      body: JSON.stringify({ theme_clothings: themeClothingInputs })
     }).then((_) => {
       return
     })
   }
 
-  updateThemeClothing(themeClothing: ThemeClothingInput): Promise<void> {
+  updateThemeClothing(themeClothingInput: ThemeClothingInput): Promise<void> {
     return request.put({
-      url: `${this.config.apiUrl}/theme_clothings/${themeClothing.id}`,
+      url: `${this.config.apiUrl}/theme_clothings/${themeClothingInput.id}`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify(themeClothing)
+      body: JSON.stringify(themeClothingInput)
     }).then((_) => {
       return
     })
   }
 
-  updateWorkflowExecution(workflowExecution: WorkflowExecutionInput): Promise<void> {
+  updateWorkflowExecution(workflowExecutionInput: WorkflowExecutionInput): Promise<void> {
     return request.put({
-      url: `${this.config.apiUrl}/workflow_executions/${workflowExecution.uuid}`,
+      url: `${this.config.apiUrl}/workflow_executions/${workflowExecutionInput.uuid}`,
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify(workflowExecution)
+      body: JSON.stringify(workflowExecutionInput)
     }).then((_) => {
       return
     })
