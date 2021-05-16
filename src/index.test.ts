@@ -111,7 +111,6 @@ describe('client', () => {
     })
 
     return client.updateCustomFields([{
-      integration_id: "test",
       alias: "test",
       values: [{
         integration_id: "test",
@@ -132,7 +131,6 @@ describe('client', () => {
       id: 123,
       code: "abc123",
       custom_fields: [{
-        integration_id: "test",
         alias: "test",
         values: [{
           integration_id: "test",
