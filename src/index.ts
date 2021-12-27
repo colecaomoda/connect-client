@@ -5,6 +5,7 @@ import SupplierInput from "./supplierInput"
 import CustomFieldInput from "./customFieldInput"
 import ThemeClothingInput from "./themeClothingInput"
 import WorkflowExecutionInput from "./workflowExecutionInput"
+import IntegrationOptionInput from "./integrationOptionInput"
 
 export interface IConnectClient {
   upsertMaterials(materialInputs: Array<MaterialInput>): Promise<void>;
@@ -13,7 +14,10 @@ export interface IConnectClient {
   updateCustomFields(customFieldInputs: Array<CustomFieldInput>): Promise<void>;
   updateThemeClothings(themeClothingInputs: Array<ThemeClothingInput>): Promise<void>;
   updateThemeClothing(themeClothingInput: ThemeClothingInput): Promise<void>;
+  createProductStages(productIds: Array<number>, stageId: number, endsAt: number): Promise<void>;
+  completeProductStages(roductIds: Array<number>, stageId: number): Promise<void>;
   updateWorkflowExecution(workflowExecutionInput: WorkflowExecutionInput): Promise<void>;
+  updateIntegrationOptions(integrationOptionInputs: Array<IntegrationOptionInput>): Promise<void>;
 }
 
 export class ConnectConfig {
@@ -107,6 +111,42 @@ export default class ConnectClient implements IConnectClient {
         "Authorization": this.config.authToken,
       },
       body: JSON.stringify(workflowExecutionInput)
+    }).then((_) => {
+      return
+    })
+  }
+
+  updateIntegrationOptions(integrationOptionInputs: Array<IntegrationOptionInput>): Promise<void> {
+    return request.put({
+      url: `${this.config.apiUrl}/integration_options`,
+      headers: {
+        "Authorization": this.config.authToken,
+      },
+      body: JSON.stringify({ integration_options: integrationOptionInputs })
+    }).then((_) => {
+      return
+    })
+  }
+
+  createProductStages(productIds: Array<number>, stageId: number, endsAt: number): Promise<void> {
+    return request.put({
+      url: `${this.config.apiUrl}/product_stages/create`,
+      headers: {
+        "Authorization": this.config.authToken,
+      },
+      body: JSON.stringify({ product_ids: productIds, stage_id: stageId, ends_at: endsAt })
+    }).then((_) => {
+      return
+    })
+  }
+
+  completeProductStages(productIds: Array<number>, stageId: number): Promise<void> {
+    return request.put({
+      url: `${this.config.apiUrl}/product_stages/complete`,
+      headers: {
+        "Authorization": this.config.authToken,
+      },
+      body: JSON.stringify({ product_ids: productIds, stage_id: stageId })
     }).then((_) => {
       return
     })

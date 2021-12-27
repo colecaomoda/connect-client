@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3
+
+- Added `updateIntegrationOptions`.
+- Added `createProductStages`.
+- Added `completeProductStages`.
+
 ## 0.2.2
 
 - Added `updateThemeClothings`.
