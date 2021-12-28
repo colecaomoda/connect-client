@@ -122,7 +122,7 @@ export default class ConnectClient implements IConnectClient {
       headers: {
         "Authorization": this.config.authToken,
       },
-      body: JSON.stringify({ integration_options: integrationOptionInputs })
+      body: JSON.stringify({ options: integrationOptionInputs })
     }).then((_) => {
       return
     })
